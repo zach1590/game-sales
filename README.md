@@ -18,5 +18,21 @@ node 18.16.0
 
 Everything runs on localhost for now at least
 
-How to Run:
+# How to Run:
+## Database
+First clone the repository and the enter repositories top level directory. Then run the following:
+ - `cd bestselling_videogame_data`
+ - `psql -U <username> -f init_db.sql` (You'll be prompted for your PostgreSQL password)
+
+A database has been created and populated with data from the csv files. The database is named `gamesales` so if you have another database named the same way, there may be issues. Inside the `gamesales` database, there will be 4 tables corresponding each csv file. The tables are named `bestselling`, `images`, `genres`, and `reviews`. 
+
+NOTE: The `images` table only stores the name of the images, the actual images are kept inside the following directory: `backend/game_sales/src/main/resources/game_images`
+
+You will need to specify the port that your PostgreSQL database is running on (as well as username and password) inside `backend/game_sales/src/main/resources/.env` follow the `.env.example` for help.
+
+That should conclude database setup
+
+## Backend
  - This will be updated once complete
+
+## Frontend
