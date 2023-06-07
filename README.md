@@ -28,7 +28,7 @@ A database has been created and populated with data from the csv files. The data
 
 NOTE: The `images` table only stores the name of the images, the actual images are kept inside the following directory: `backend/game_sales/src/main/resources/game_images`
 
-You will need to specify the port that your PostgreSQL database is running on (as well as username and password) inside `backend/game_sales/src/main/resources/.env` follow the `.env.example` for help.
+You will need to specify the port that your PostgreSQL database is running on (as well as username and password) inside a `.env` file. This file should be located within `backend/game_sales/src/main/resources/` follow the `.env.example` located in the same directory for help.
 
 That should conclude database setup
 
