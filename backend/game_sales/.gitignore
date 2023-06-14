@@ -34,3 +34,6 @@ build/
 
 ### Environment Variables ###
 .env
+
+### Heap Profiling ###
+*.hprof

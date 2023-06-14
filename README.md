@@ -11,10 +11,12 @@ https://www.kaggle.com/datasets/devrimtuner/top-100-video-games
 Links to Trailers and Images were compiled myself from various random sources
 
 Version:
-Spring Boot 3.1.0
 Java 17
+Spring Boot 3.1.0
+Apache Maven 3.9.2
 npm 9.5.1
 node 18.16.0
+PostgreSQL 15.3
 
 Everything runs on localhost for now at least
 
@@ -33,6 +35,10 @@ You will need to specify the port that your PostgreSQL database is running on (a
 That should conclude database setup
 
 ## Backend
- - This will be updated once complete
+ - `cd backend`
+ - `cd game_sales`
+ - `mvn spring-boot:run`
+
+Will start the backend running at localhost:8080
 
 ## Frontend
