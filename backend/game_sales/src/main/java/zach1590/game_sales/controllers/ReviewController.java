@@ -33,7 +33,7 @@ public class ReviewController {
         );
     }
 
-    @PostMapping("/")
+    @PostMapping
     public ResponseEntity<Review> addReview(@RequestBody AddReviewRequest reviewReq) {
         return new ResponseEntity<Review>(
             reviewService.addReview(reviewReq), 

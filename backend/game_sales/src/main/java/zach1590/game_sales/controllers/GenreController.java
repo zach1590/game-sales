@@ -22,7 +22,7 @@ public class GenreController {
     @Autowired
     private GenreService genreService;
 
-    @GetMapping("/")
+    @GetMapping
     public ResponseEntity<List<String>> getGenres() {
         return new ResponseEntity<List<String>>(
             genreService.getGenres(), 
