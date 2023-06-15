@@ -35,6 +35,13 @@ You will need to specify the port that your PostgreSQL database is running on (a
 That should conclude database setup
 
 ## Backend
+When you set up your database, you had to create and modify the `.env` file. There is one last field that needs to be set up which is the folder you will be attempting to save and upload images to (`IMAGE_FOLDER`). Copy the images from `bestselling_videogame_data/game_images` to another location on your computer where you have write access or if you would like to just continue using the current location. Set the absolute path of the chosen directory equal to `IMAGE_FOLDER` within the `.env` file.
+
+NOTE 1: Remember the trailing '/' for the directory
+
+NOTE 2: '/' will still work on windows ('\\' is uneccessary)
+
+Finally to run the backend:
  - `cd backend`
  - `cd game_sales`
  - `mvn spring-boot:run`
