@@ -13,4 +13,7 @@ public interface ImageRepository extends JpaRepository<Image, Long>{
 
     @Query(value = "SELECT * FROM images WHERE imageid = ?1", nativeQuery = true)
     Image findImageById(long imageid);
+
+    @Query(value = "SELECT COUNT(i) FROM images i WHERE titleid = ?1", nativeQuery = true)
+    long findNumImages(long titleid);
 }
