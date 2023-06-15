@@ -39,7 +39,7 @@ When you set up your database, you had to create and modify the `.env` file. The
 
 NOTE 1: Remember the trailing '/' for the directory
 
-NOTE 2: '/' will still work on windows ('\\' is uneccessary)
+NOTE 2: '/' will still work on windows ('\\\\' is uneccessary)
 
 Finally to run the backend:
  - `cd backend`
