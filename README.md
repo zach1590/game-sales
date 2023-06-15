@@ -59,7 +59,7 @@ GET `/api/v1/games/top`: Returns the data for the top10 bestselling games except
 
 **genres**  
 GET `/api/v1/genres`: Returns a list of all the genres that exist  
-GET `/api/v1/genres/bytitle/{titleId}`: Returns a list of the genres for the game corresponding to titleid
+GET `/api/v1/genres/bytitle/{titleId}`: Returns a list of the genres for the game corresponding to titleid  
 GET `/api/v1/genres/{gameGenre}`: Returns the all games corresponding to that specific genre
 
 **images**  
