@@ -1,4 +1,4 @@
-Project to learn about Spring Boot and React as well as full stack applications in general
+Small Project to learn about Spring Boot
 
 Data to initially populate the database was taken from kaggle from the following sources:
 
@@ -14,11 +14,9 @@ Version:
 Java 17
 Spring Boot 3.1.0
 Apache Maven 3.9.2
-npm 9.5.1
-node 18.16.0
 PostgreSQL 15.3
 
-Everything runs on localhost for now at least
+Everything runs on localhost
 
 # How to Run:
 ## Database
@@ -28,9 +26,9 @@ First clone the repository and the enter repositories top level directory. Then 
 
 A database has been created and populated with data from the csv files. The database is named `gamesales` so if you have another database named the same way, there may be issues. Inside the `gamesales` database, there will be 4 tables corresponding each csv file. The tables are named `bestselling`, `images`, `genres`, and `reviews`. 
 
-NOTE: The `images` table only stores the name of the images, the actual images are kept inside the following directory: `backend/game_sales/src/main/resources/game_images`
+NOTE: The `images` table only stores the name of the images, the actual images are kept in a directory specified by you
 
-You will need to specify the port that your PostgreSQL database is running on (as well as username and password) inside a `.env` file. This file should be located within `backend/game_sales/src/main/resources/` follow the `.env.example` located in the same directory for help.
+You will need to specify the port that your PostgreSQL database is running on (as well as username and password) inside a `.env` file. This file should be located within `game_sales/src/main/resources/` follow the `.env.example` located in the same directory for help.
 
 That should conclude database setup
 
@@ -45,7 +43,6 @@ NOTE 2: '/' will still work on windows ('\\\\' is uneccessary)
 
 ### How to Run
 Finally to run the backend:
- - `cd backend`
  - `cd game_sales`
  - `mvn spring-boot:run`
 
@@ -73,3 +70,4 @@ POST `/api/v1/reviews`: Post a new review for a game, the format is a JSON {revi
 GET `/api/v1/reviews/bytitle/{titleId}`: Returns a list of all reviews for the game corresponding to titleid
 
 ## Frontend
+Maybe I'll add one later
