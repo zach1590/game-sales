@@ -2,14 +2,11 @@ package zach1590.game_sales.controllers;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.file.Files;
-import java.nio.file.Path;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -35,9 +32,6 @@ public class ImageController {
     @Autowired
     private ImageService imageService;
 
-    @Value("${IMAGE_FOLDER}")
-    private String IMAGE_FOLDER;
-
     @GetMapping(value = "/bytitle/{titleId}")
     public ResponseEntity<List<Image>> getImagesByTitleId(@PathVariable long titleId) {
         return new ResponseEntity<List<Image>>(
@@ -49,31 +43,26 @@ public class ImageController {
     @GetMapping(value = "/{imageId}")
     public ResponseEntity<byte[]> getImageById(@PathVariable long imageId) throws IOException {
 
-        String imageName = imageService.getImageById(imageId);
-        File imgFilePath = new File(IMAGE_FOLDER + imageName);
-        Path path = imgFilePath.toPath();
-
-        FileInputStream input = new FileInputStream(imgFilePath);
+        File imgFile = imageService.getImageFileById(imageId);
+        FileInputStream input = new FileInputStream(imgFile);
         byte[] bytes = StreamUtils.copyToByteArray(input);
 
         return ResponseEntity
                 .ok()
-                .contentType(MediaType.parseMediaType(Files.probeContentType(path)))
+                .contentType(MediaType.parseMediaType(Files.probeContentType(imgFile.toPath())))
                 .body(bytes);
     }
 
     @GetMapping(value = "/byname/{imageName}")
     public ResponseEntity<byte[]> getImageByName(@PathVariable String imageName) throws IOException {
 
-        File imgFilePath = new File(IMAGE_FOLDER + imageName);
-        Path path = imgFilePath.toPath();
-
-        FileInputStream input = new FileInputStream(imgFilePath);
+        File imgFile = imageService.getImageFileByName(imageName);
+        FileInputStream input = new FileInputStream(imgFile);
         byte[] bytes = StreamUtils.copyToByteArray(input);
 
         return ResponseEntity
                 .ok()
-                .contentType(MediaType.parseMediaType(Files.probeContentType(path)))
+                .contentType(MediaType.parseMediaType(Files.probeContentType(imgFile.toPath())))
                 .body(bytes);
     }
 
@@ -83,18 +72,13 @@ public class ImageController {
         @RequestParam("image") MultipartFile imgFile,
         @RequestParam("titleId") long titleid
         ) throws IOException {
-        
+
         String imageName = imageService.determineImageName(titleid) + getExtension(reqImageName);
-        File imgFilePath = new File(IMAGE_FOLDER + imageName);
-        imgFilePath.createNewFile();
-
-        FileOutputStream output = new FileOutputStream(imgFilePath);
-        output.write(imgFile.getBytes());
-        output.close();
-
         AddImageRequest imageReq = new AddImageRequest(titleid, imageName, imgFile);
+        Image img = imageService.addImage(imageReq);
+
         return new ResponseEntity<Image>(
-            imageService.addImage(imageReq), 
+            img, 
             HttpStatus.OK
         );
     }
